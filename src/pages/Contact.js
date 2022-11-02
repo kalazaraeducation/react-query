@@ -6,7 +6,8 @@ const Contact = () => {
     ["data"],
     () => axios.get("https://reqres.in/api/users?page=1"),
     {
-      cacheTime: 10000,
+      // cacheTime: 10000,
+      staleTime: 10000,
     }
   );
 
