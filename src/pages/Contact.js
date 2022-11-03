@@ -7,7 +7,13 @@ const Contact = () => {
     () => axios.get("https://reqres.in/api/users?page=1"),
     {
       // cacheTime: 10000,
-      staleTime: 10000,
+      // staleTime: 10000,
+      // retry: false,
+      // retryDelay: 5000,
+      // refetchOnMount: false,
+      // refetchOnWindowFocus: false,
+      refetchInterval: 5000,
+      refetchIntervalInBackground: true,
     }
   );
 
