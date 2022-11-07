@@ -2,9 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const Contact = () => {
-  const { data, isLoading, isError, error } = useQuery(
+  const { data, isLoading, isError, error, refetch } = useQuery(
     ["data"],
-    () => axios.get("https://reqres.in/api/users?page=1"),
+    () => axios.get("https://reqres.in/api1/users?page=1"),
     {
       // cacheTime: 10000,
       // staleTime: 10000,
@@ -12,8 +12,15 @@ const Contact = () => {
       // retryDelay: 5000,
       // refetchOnMount: false,
       // refetchOnWindowFocus: false,
-      refetchInterval: 5000,
-      refetchIntervalInBackground: true,
+      // refetchInterval: 5000,
+      // refetchIntervalInBackground: true,
+      // enabled: false,
+      onSuccess: () => {
+        console.log("on sucess executed");
+      },
+      onError: () => {
+        console.log("on error executed");
+      },
     }
   );
 
@@ -25,6 +32,7 @@ const Contact = () => {
 
   return (
     <>
+      <button onClick={refetch}>Fetch</button>
       {data?.data.data.map((item, i) => (
         <p key={i}>{item.email}</p>
       ))}
