@@ -1,5 +1,6 @@
 // import { useQuery } from "@tanstack/react-query";
 // import axios from "axios";
+import { Link } from "react-router-dom";
 import { UserHookData } from "../pages/hooks/query-hooks";
 
 const Contact = () => {
@@ -15,7 +16,10 @@ const Contact = () => {
     <>
       <button onClick={refetch}>Fetch</button>
       {data?.data.map((item, i) => (
-        <p key={i}>{item.email}</p>
+        <div key={i}>
+          <p>{item.email}</p>
+          <Link to={`/single-user-data/${item.id}`}>Profile</Link>
+        </div>
       ))}
     </>
   );
