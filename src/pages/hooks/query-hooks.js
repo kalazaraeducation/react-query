@@ -25,3 +25,13 @@ export const UserHookData = () => {
     }
   );
 };
+
+export const RandomData = () => {
+  return useQuery(
+    ["randomData"],
+    () => axios.get("https://reqres.in/api/users?page=2"),
+    {
+      select: (res) => res.data,
+    }
+  );
+};

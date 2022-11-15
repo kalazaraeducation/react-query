@@ -9,7 +9,7 @@ const UserProfile = () => {
   console.log("params", params);
 
   const { isLoading, data } = useQuery(
-    ["userData"],
+    ["userData", params.userId],
     () => axios.get(`https://reqres.in/api/users/${params.userId}`),
     {
       select: (res) => res.data,
@@ -18,7 +18,15 @@ const UserProfile = () => {
 
   console.log("user data", data && data);
 
-  return <div>UserProfile</div>;
+  return (
+    <div>
+      <h1>User Profile</h1>
+      <p>{data?.data.email}</p>
+      <p>{data?.data.first_name}</p>
+      <p>{data?.data.last_name}</p>
+      <p>{data?.data.id}</p>
+    </div>
+  );
 };
 
 export default UserProfile;
