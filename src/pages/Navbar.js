@@ -17,6 +17,9 @@ const Navbar = () => {
         <li>
           <NavLink to="/paginated-queries">P-Queries</NavLink>
         </li>
+        <li>
+          <NavLink to="/infinite-queries">I-Queries</NavLink>
+        </li>
       </ul>
     </div>
   );

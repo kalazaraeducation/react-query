@@ -6,6 +6,7 @@ import Navbar from "./pages/Navbar";
 import UserProfile from "./pages/UserProfile";
 import DependentQueries from "./pages/DependentQueries";
 import PaginatedQueries from "./pages/PaginatedQueries";
+import InfiniteQueries from "./pages/InfiniteQueries";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/single-user-data/:userId" element={<UserProfile />} />
         <Route path="/dependent-queries" element={<DependentQueries />} />
         <Route path="/paginated-queries" element={<PaginatedQueries />} />
+        <Route path="/infinite-queries" element={<InfiniteQueries />} />
       </Routes>
     </Router>
   );

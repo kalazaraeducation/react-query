@@ -1,10 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import { useParams } from "react-router-dom";
 
 const UserProfile = () => {
   const params = useParams();
+  const queryClient = useQueryClient();
 
   console.log("params", params);
 
@@ -13,6 +14,18 @@ const UserProfile = () => {
     () => axios.get(`https://reqres.in/api/users/${params.userId}`),
     {
       select: (res) => res.data,
+      initialData: () => {
+        const user = queryClient
+          .getQueryData(["user-data"])
+          ?.data.data.find((item) => item.id === parseInt(params.userId));
+
+        if (user) {
+          console.log("initial data", { data: user });
+          return { data: { data: user } };
+        } else {
+          return undefined;
+        }
+      },
     }
   );
 

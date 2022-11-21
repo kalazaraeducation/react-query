@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const UserHookData = () => {
   return useQuery(
-    ["data"],
+    ["user-data"],
     () => axios.get("https://reqres.in/api/users?page=1"),
     {
       // cacheTime: 10000,
