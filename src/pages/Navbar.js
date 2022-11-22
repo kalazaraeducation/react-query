@@ -20,6 +20,9 @@ const Navbar = () => {
         <li>
           <NavLink to="/infinite-queries">I-Queries</NavLink>
         </li>
+        <li>
+          <NavLink to="/mutation-queries">M-Queries</NavLink>
+        </li>
       </ul>
     </div>
   );

@@ -7,6 +7,7 @@ import UserProfile from "./pages/UserProfile";
 import DependentQueries from "./pages/DependentQueries";
 import PaginatedQueries from "./pages/PaginatedQueries";
 import InfiniteQueries from "./pages/InfiniteQueries";
+import MutationQueries from "./pages/MutationQueries";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="/dependent-queries" element={<DependentQueries />} />
         <Route path="/paginated-queries" element={<PaginatedQueries />} />
         <Route path="/infinite-queries" element={<InfiniteQueries />} />
+        <Route path="/mutation-queries" element={<MutationQueries />} />
       </Routes>
     </Router>
   );
