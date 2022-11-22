@@ -6,8 +6,16 @@ const MutationQueries = () => {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
 
-  const { mutate } = useMutation((data) =>
-    axios.post("https://reqres.in/api/users", data)
+  const { mutate, isLoading } = useMutation(
+    (data) => axios.post("https://reqres.in/api/users", data),
+    {
+      onSuccess: (response) => {
+        console.log("response", response);
+      },
+      onError: (error) => {
+        console.log("error", error);
+      },
+    }
   );
 
   const handleSubmit = (e) => {
@@ -48,10 +56,11 @@ const MutationQueries = () => {
           />
         </div>
         <button
+          disabled={isLoading}
           type="submit"
           className="py-1 px-3 bg-yellow-500 rounded text-3xl"
         >
-          Submit
+          {isLoading ? "executing" : "submit"}
         </button>
       </form>
     </div>
