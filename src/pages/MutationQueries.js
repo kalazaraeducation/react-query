@@ -1,8 +1,9 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 
 const MutationQueries = () => {
+  const queryClient = useQueryClient();
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
 
@@ -11,6 +12,8 @@ const MutationQueries = () => {
     {
       onSuccess: (response) => {
         console.log("response", response);
+        queryClient.invalidateQueries({ queryKey: ["user-data"] });
+        console.log("success");
       },
       onError: (error) => {
         console.log("error", error);
